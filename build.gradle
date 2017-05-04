@@ -1,0 +1,58 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.3.RELEASE'
+    }
+    repositories {
+        maven {
+            url "https://cstr-nexus.swissbank.com:8443/content/repositories/gradle-plugins"
+        }
+        maven {
+            url "https://cstr-nexus.swissbank.com:8443/content/repositories/central"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+
+jar {
+    baseName = 'esens-admin'
+    version = '0.0.1-SNAPSHOT'
+}
+
+repositories {
+//	mavenCentral()
+//    jcenter()
+    maven { url "https://cstr-nexus.swissbank.com:8443/content/repositories/releases" }
+    maven { url "https://cstr-nexus.swissbank.com:8443/content/repositories/thirdparty" }
+    maven { url "https://cstr-nexus.swissbank.com:8443/content/repositories/tess.releases" }
+    maven { url "https://cstr-nexus.swissbank.com:8443/content/repositories/central" }
+    maven { url "https://cstr-nexus.swissbank.com:8443/content/repositories/spring-plugins-release" }
+    maven { url "https://cstr-nexus.swissbank.com:8443/content/repositories/fiops.internal" }
+    maven { url "https://cstr-nexus.swissbank.com:8443/content/repositories/opsit-releases" }
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-aop')
+    compile('org.springframework.boot:spring-boot-starter-cache')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile('org.springframework.boot:spring-boot-starter-hateoas')
+    compile('org.springframework.boot:spring-boot-starter-integration')
+    compile('org.springframework.boot:spring-boot-starter-jooq')
+//	compile('org.liquibase:liquibase-core')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-validation')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-web-services')
+    runtime('org.postgresql:postgresql')
+    runtime('org.springframework.boot:spring-boot-devtools')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
