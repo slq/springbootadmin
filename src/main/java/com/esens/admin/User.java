@@ -1,4 +1,4 @@
-package com.esens;
+package com.esens.admin;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

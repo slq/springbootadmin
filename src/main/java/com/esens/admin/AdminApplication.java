@@ -1,4 +1,4 @@
-package com.esens;
+package com.esens.admin;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
