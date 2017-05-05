@@ -25,6 +25,18 @@ public class Activity implements Serializable {
     @JoinColumn(name = "id_sala")
     private Hall hall;
 
+    public Long getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Hall getHall() {
+        return hall;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Activity{");

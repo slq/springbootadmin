@@ -25,6 +25,22 @@ public class Hall {
     @JoinColumn(name= "id_budynek")
     private Location location;
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Hall{");

@@ -23,12 +23,23 @@ public class Location implements Serializable {
     @OneToMany(mappedBy = "location")
     private Set<Hall> halls = new HashSet<>();
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public Set<Hall> getHalls() {
+        return halls;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Location{");
         sb.append("id=").append(id);
         sb.append(", address='").append(address).append('\'');
-//        sb.append(", halls=").append(halls);
         sb.append('}');
         return sb.toString();
     }
