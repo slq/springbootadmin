@@ -1,5 +1,7 @@
 package com.esens.admin;
 
+import com.esens.admin.activity.ActivityRepository;
+import com.esens.admin.user.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -17,9 +19,10 @@ public class AdminApplication {
 	}
 
     @Bean
-    public CommandLineRunner demo(final UserRepository repository) {
+    public CommandLineRunner demo(final UserRepository repository, final ActivityRepository activityRepository) {
         return (args) -> {
-            repository.findAll().stream().forEach(System.out::println);
+//            repository.findAll().stream().forEach(System.out::println);
+            System.out.println(activityRepository.findOne(86613L));
         };
     }
 }

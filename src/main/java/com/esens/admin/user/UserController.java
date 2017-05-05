@@ -1,4 +1,4 @@
-package com.esens.admin;
+package com.esens.admin.user;
 
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;

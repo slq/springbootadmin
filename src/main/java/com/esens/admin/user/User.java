@@ -1,5 +1,6 @@
-package com.esens.admin;
+package com.esens.admin.user;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Table(name = "tab_uzytkownik", schema = "auth")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy= AUTO)

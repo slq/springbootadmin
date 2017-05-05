@@ -1,4 +1,4 @@
-package com.esens.admin;
+package com.esens.admin.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
