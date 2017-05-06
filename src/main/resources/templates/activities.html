@@ -38,6 +38,7 @@
             <th>SALA</th>
             <th>LOKALIZACJA</th>
             <th>GRUPA</th>
+            <th>L. UCZESTNIKÓW</th>
         </tr>
         <tr th:each="activity, iterStat : ${activities}" th:class="${iterStat.odd} ? 'odd'">
             <td th:text="${iterStat.count}"></td>
@@ -45,6 +46,7 @@
             <td th:text="${activity.hall.name}"></td>
             <td th:text="${activity.hall.location.address}"></td>
             <td th:text="${activity.group.name + ' - ' + activity.group.description}"></td>
+            <td th:text="${#sets.size(activity.group.members)}"></td>
         </tr>
     </table>
 

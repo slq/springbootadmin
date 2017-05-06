@@ -2,6 +2,8 @@ package com.esens.admin.activity;
 
 import com.esens.admin.facility.Hall;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +30,12 @@ public class Activity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "apzc_id_grupa")
     private Group group;
+
+    public static Activity anActivityOn(LocalDate date) {
+        Activity activity = new Activity();
+        activity.date = Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        return activity;
+    }
 
     public Long getId() {
         return id;
