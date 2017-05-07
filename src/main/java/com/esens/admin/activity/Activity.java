@@ -5,12 +5,18 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
+import static com.esens.admin.activity.Participant.aParticipant;
 
 @Entity
 @Table(name = "tab_alokacja_pojedyncza", schema = "indywidualne")
@@ -36,6 +42,9 @@ public class Activity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "apzc_id_grupa")
     private Group group;
+
+    @OneToMany(mappedBy = "activity")
+    private Set<Presence> presence = new HashSet<>();
 
     public static Activity anActivityOn(LocalDate date) {
         Activity activity = new Activity();
@@ -72,6 +81,21 @@ public class Activity implements Serializable {
         int minute = 15 * (quater % 4);
 
         return String.format("%d:%d", hour, minute);
+    }
+
+    public Set<Presence> getPresence() {
+        return presence;
+    }
+
+    public Set<Participant> getParticipants() {
+        Set<Participant> result = new HashSet<>();
+        getGroup().getMembers().stream()
+                .forEach(member -> result.add(aParticipant(member.getName(), member.getLastName())));
+
+        getPresence().stream()
+                .forEach(p -> result.add(aParticipant(p.getClient().getName(), p.getClient().getLastName())));
+
+        return result;
     }
 
     @Override
