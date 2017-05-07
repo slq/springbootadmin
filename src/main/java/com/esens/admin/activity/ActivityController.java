@@ -1,9 +1,13 @@
 package com.esens.admin.activity;
 
+
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,9 +24,12 @@ public class ActivityController {
     @RequestMapping("/activity")
     public String allActivities(Map<String, Object> model) {
         Activity activity = anActivityOn(LocalDate.of(2017, APRIL, 12));
-        Example<Activity> matcher = Example.of(activity);
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withIgnorePaths("beginning", "end");
+        Example<Activity> activityExample = Example.of(activity, matcher);
 
-        model.put("activities", repository.findAll(matcher));
+        model.put("activities", repository.findAll(activityExample));
+        model.put("members", repository.findOne(87727L).getGroup().getMembers());
         return "activities";
     }
 }

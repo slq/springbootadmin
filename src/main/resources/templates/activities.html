@@ -38,6 +38,7 @@
             <th>SALA</th>
             <th>LOKALIZACJA</th>
             <th>GRUPA</th>
+            <th>GODZINA</th>
             <th>L. UCZESTNIKÓW</th>
         </tr>
         <tr th:each="activity, iterStat : ${activities}" th:class="${iterStat.odd} ? 'odd'">
@@ -46,7 +47,25 @@
             <td th:text="${activity.hall.name}"></td>
             <td th:text="${activity.hall.location.address}"></td>
             <td th:text="${activity.group.name + ' - ' + activity.group.description}"></td>
+            <td th:text="${activity.beginning + ' - ' + activity.end}"></td>
             <td th:text="${#sets.size(activity.group.members)}"></td>
+        </tr>
+    </table>
+
+    <h1>Members</h1>
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>IMIE</th>
+            <th>NAZWISKO</th>
+        </tr>
+        <tr th:each="member, iterStat : ${members}" th:class="${iterStat.odd} ? 'odd'">
+            <td th:text="${iterStat.count}"></td>
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.lastName}"></td>
         </tr>
     </table>
 

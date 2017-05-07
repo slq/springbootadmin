@@ -23,6 +23,12 @@ public class Activity implements Serializable {
     @Column(name = "data_alok")
     private Date date;
 
+    @Column(name = "id_poczatek")
+    private int beginning;
+
+    @Column(name = "id_koniec")
+    private int end;
+
     @ManyToOne
     @JoinColumn(name = "id_sala")
     private Hall hall;
@@ -51,6 +57,21 @@ public class Activity implements Serializable {
 
     public Group getGroup() {
         return group;
+    }
+
+    public String getBeginning() {
+        return quaterToString(beginning);
+    }
+
+    public String getEnd() {
+        return quaterToString(end);
+    }
+
+    private String quaterToString(int quater) {
+        int hour = quater / 4;
+        int minute = 15 * (quater % 4);
+
+        return String.format("%d:%d", hour, minute);
     }
 
     @Override
