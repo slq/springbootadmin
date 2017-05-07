@@ -1,6 +1,5 @@
 package com.esens.admin.activity;
 
-import com.esens.admin.customer.Member;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
