@@ -31,7 +31,6 @@ public class ActivityController {
     @RequestMapping("/activity")
     public String allActivities(Map<String, Object> model) {
         model.put("activities", getAllActivities());
-        model.put("participants", getParticipantsOf(85814L));
         return "activities";
     }
 

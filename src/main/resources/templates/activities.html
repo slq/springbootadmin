@@ -37,7 +37,6 @@
             <th>LOKALIZACJA</th>
             <th>GRUPA</th>
             <th>GODZINA</th>
-            <th>L. UCZESTNIKÓW</th>
             <th></th>
         </tr>
         <tr th:each="activity, iterStat : ${activities}" th:class="${iterStat.odd} ? 'odd'">
@@ -47,11 +46,8 @@
             <td th:text="${activity.hall.location.address}"></td>
             <td th:text="${activity.group.name + ' - ' + activity.group.description}"></td>
             <td th:text="${activity.beginning + ' - ' + activity.end}"></td>
-            <td th:text="${#sets.size(activity.participants)}"></td>
             <td>
-                <button type="button" class="btn btn-info btn-xs">
-                    SHOW
-                </button>
+                <button type="button" class="btn btn-info btn-xs">SHOW</button>
             </td>
         </tr>
     </table>
