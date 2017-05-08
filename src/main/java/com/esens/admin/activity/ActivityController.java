@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import static com.esens.admin.activity.Activity.anActivityBy;
@@ -72,8 +73,8 @@ public class ActivityController {
     }
 
     @PostMapping("/activity")
-    public String savePresence(@ModelAttribute ClientPresence clientPresence) {
+    public String savePresence(@ModelAttribute ClientPresence clientPresence, RedirectAttributes attributes) {
 
-        return "activities";
+        return "redirect:/activity";
     }
 }

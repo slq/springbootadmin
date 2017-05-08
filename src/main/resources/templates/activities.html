@@ -54,14 +54,12 @@
 
     <h1>Members</h1>
 
-    <div class="row">
-        <button type="button" class="btn btn-primary">SAVE</button>
-        <button type="button" class="btn btn-warning">CANCEL</button>
-    </div>
-
     <form action="#" th:action="@{/activity}" th:object="${clientPresence}" method="post">
         <div class="row">
-            <input type="submit" value="SUBMIT"/><input type="reset" value="RESET"/>
+            <p>
+                <button type="submit" class="btn btn-primary">SAVE</button>
+                <button type="reset" class="btn btn-warning">RESET</button>
+            </p>
         </div>
         <table id="members_table" class="table table-striped table-hover">
             <tr>
