@@ -15,9 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-import static com.esens.admin.activity.Participant.aParticipant;
-
 @Entity
 @Table(name = "tab_alokacja_pojedyncza", schema = "indywidualne")
 public class Activity implements Serializable {
@@ -95,17 +92,6 @@ public class Activity implements Serializable {
 
     public Set<Presence> getPresence() {
         return presence;
-    }
-
-    public Set<Participant> getParticipants() {
-        Set<Participant> result = new HashSet<>();
-//        getGroup().getMembers().stream()
-//                .forEach(member -> result.add(aParticipant(member.getName(), member.getLastName())));
-
-        getPresence().stream()
-                .forEach(p -> result.add(aParticipant(p.getClient().getId(), p.getClient().getName(), p.getClient().getLastName())));
-
-        return result;
     }
 
     public Long getWeeklyId() {

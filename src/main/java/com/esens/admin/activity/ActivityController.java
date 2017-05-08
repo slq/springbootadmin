@@ -1,6 +1,7 @@
 package com.esens.admin.activity;
 
 
+import com.esens.admin.client.Client;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -56,12 +57,12 @@ public class ActivityController {
         return repository.findAll(activityExample, new Sort("beginning"));
     }
 
-    private Collection<Participant> getParticipantsOf(Long activityId) {
+    private Collection<Client> getParticipantsOf(Long activityId) {
         Activity activity = anActivityBy(repository.findOne(activityId).getWeeklyId());
         Example<Activity> activityExample = Example.of(activity, MATCHER);
 
         return repository.findAll(activityExample).stream()
-                .flatMap(a -> a.getParticipants().stream())
+                .flatMap(a -> a.getPresence().stream().map(Presence::getClient))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream()
                 .filter(map -> map.getValue() > 1)
