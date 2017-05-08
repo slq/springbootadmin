@@ -46,11 +46,21 @@ public class Activity implements Serializable {
     @OneToMany(mappedBy = "activity")
     private Set<Presence> presence = new HashSet<>();
 
+    @Column(name = "id_alok_cotygod")
+    private Long weeklyId;
+
     public static Activity anActivityOn(LocalDate date) {
         Activity activity = new Activity();
         activity.date = Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
         return activity;
     }
+
+    public static Activity anActivityBy(Long weeklyId) {
+        Activity activity = new Activity();
+        activity.weeklyId = weeklyId;
+        return activity;
+    }
+
 
     public Long getId() {
         return id;
@@ -96,6 +106,10 @@ public class Activity implements Serializable {
                 .forEach(p -> result.add(aParticipant(p.getClient().getName(), p.getClient().getLastName())));
 
         return result;
+    }
+
+    public Long getWeeklyId() {
+        return weeklyId;
     }
 
     @Override
