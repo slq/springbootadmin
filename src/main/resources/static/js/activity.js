@@ -5,5 +5,5 @@ $(document).ready(function () {
 });
 
 $('button').click(function () {
-    alert('click');
+    window.location = $(this).parent().parent().find('td.activityid').text()
 });
