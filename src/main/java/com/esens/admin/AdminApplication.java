@@ -12,11 +12,11 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class AdminApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(AdminApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(AdminApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(AdminApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AdminApplication.class, args);
+    }
 
     @Bean
     public CommandLineRunner demo(final UserRepository repository, final ActivityRepository activityRepository) {
