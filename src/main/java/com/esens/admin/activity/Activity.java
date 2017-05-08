@@ -99,11 +99,11 @@ public class Activity implements Serializable {
 
     public Set<Participant> getParticipants() {
         Set<Participant> result = new HashSet<>();
-        getGroup().getMembers().stream()
-                .forEach(member -> result.add(aParticipant(member.getName(), member.getLastName())));
+//        getGroup().getMembers().stream()
+//                .forEach(member -> result.add(aParticipant(member.getName(), member.getLastName())));
 
         getPresence().stream()
-                .forEach(p -> result.add(aParticipant(p.getClient().getName(), p.getClient().getLastName())));
+                .forEach(p -> result.add(aParticipant(p.getClient().getId(), p.getClient().getName(), p.getClient().getLastName())));
 
         return result;
     }
